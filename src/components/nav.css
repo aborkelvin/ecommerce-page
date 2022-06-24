@@ -1,0 +1,47 @@
+.nav-container{
+    /* background-color: rgb(204, 193, 193); */
+    padding: 45px 50px 50px 50px;
+    border-bottom: 1px solid rgb(170, 170, 170);
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+.logo{    
+    position: relative;
+    top: 2px;
+}
+
+nav{
+    /* background-color: rgb(252, 197, 197); */
+    width: 400px;
+    display: inline-block;    
+    position: relative;
+    left: 20px;
+}
+nav ul{
+    list-style-type: none;
+}
+
+nav ul li{
+    display: inline-block;
+    margin:0 10px;        
+}
+
+nav a{
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}
+
+.cartimg{
+    position: absolute;
+    top: 60px;
+    right: 140px;
+}
+
+.avatar{
+    width:60px;
+    position: absolute;
+    top: 40px;
+    right: 10px;
+}

@@ -1,0 +1,33 @@
+.shoppingcart{
+    background-color: white;
+    width: 400px;
+    height: 250px;
+    display: inline-block;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px 2px #888888;
+    display: none;
+}
+
+.shoppingcart>h2{
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.basket-content>ul{
+    padding-left:10px ;
+}
+
+.basket-content li{
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+li>img{
+    width: 50px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+li>span{
+    font-size: 20px;
+}
