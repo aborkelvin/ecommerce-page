@@ -1,0 +1,14 @@
+
+.additem{
+    width: 250px;
+    background-color:  hsl(26, 100%, 55%);
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+
+  

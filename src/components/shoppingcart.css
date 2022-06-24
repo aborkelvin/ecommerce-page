@@ -1,12 +1,18 @@
 .shoppingcart{
     background-color: white;
-    width: 400px;
-    height: 250px;
-    display: inline-block;
+    width: 420px;
+    min-height: 250px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px 2px #888888;
     display: none;
 }
+
+ .showcart{
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 120px;
+} 
 
 .shoppingcart>h2{
     margin-left: 20px;
@@ -21,13 +27,19 @@
     list-style: none;
     display: flex;
     align-items: center;
+    margin: 5px 0;
 }
 
-li>img{
+.item>img{
     width: 50px;
     border-radius: 5px;
     margin: 0 5px;
 }
-li>span{
-    font-size: 20px;
+.item>span{
+    font-size: 18px;
+    align-self: flex-start;
+}
+
+.deletebtn{
+    align-self: flex-start;
 }

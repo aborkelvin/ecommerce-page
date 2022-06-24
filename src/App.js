@@ -9,13 +9,15 @@ import ShoppingCart from './components/shoppingcart';
 
 function App() {
 
-
+  
+  const [iscartopen,setiscartopen] = useState(false)
+  const [cart,setCart] = useState({});
   return (
     <div className="App">            
       <BrowserRouter>
-            <Nav/>
+            <Nav iscartopen={iscartopen} setiscartopen={setiscartopen} />
             <Routes>
-                <Route path = '/' element = { <Home/> } />                
+                <Route path = '/' element = { <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} /> } />                
             </Routes>
         </BrowserRouter>      
             

@@ -1,4 +1,5 @@
 import './home.css';
+import Addtocart from './components/addtocart';
 import { useState,useEffect } from 'react';
 
 import image1 from './images/image-product-1.jpg'
@@ -13,15 +14,29 @@ import image8 from './images/image-product-4-thumbnail.jpg'
 
 import minus from './images/icon-minus.svg';
 import plus from './images/icon-plus.svg';
-import cartimg from './images/icon-cart.svg';
-
-function Home() {
 
 
 
-  
-  return (
-    <div className="home">      
+function Home(props) {
+
+    /* This adds an eventlistener to the whole homepage to remove the cart,will be added to all pages, a better
+        alternative should be found */
+    function closecart() {
+        if(props.iscartopen == true){
+            props.setiscartopen(false);
+            /* alert('closed') */
+        } 
+    }
+    useEffect(()=>{
+        let home = document.querySelector('.home');
+        home.onclick= function(){
+            closecart() ;
+        }
+    },[props.iscartopen]);
+
+
+    return (
+    <div className="home" >      
       <section className='homeimgs'>
         <img src = {image1 } className='image1' alt='Image on display' />
         <img src = {image5}  className = 'image5 thumbnail-img' />
@@ -43,10 +58,10 @@ function Home() {
               0
               <img src= {plus} />
            </div>
-           <div className= 'additem'>
-            <img src= {cartimg} id='cartimg' />
-            Add to cart
-           </div>
+           
+           <Addtocart iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image5} 
+            itemname = 'Autumn Edition Limited Sneakers' />
+
          </div>
       </section>
     </div>

@@ -6,7 +6,7 @@ import avatar from '../images/image-avatar.png'
 import './nav.css';
 import ShoppingCart from './shoppingcart';
 
-function Nav(){
+function Nav(props){
 
     return(
         <div className='nav-container'>            
@@ -20,7 +20,7 @@ function Nav(){
             </nav>
             <img src = {cartimg} className = 'cartimg'/>
             <img src = {avatar} className = 'avatar' />
-            <ShoppingCart />
+            <ShoppingCart iscartopen={props.iscartopen} setiscartopen = {props.setiscartopen} />
         </div>
     )
 }
