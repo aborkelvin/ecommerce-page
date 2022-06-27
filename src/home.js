@@ -19,31 +19,65 @@ import plus from './images/icon-plus.svg';
 
 function Home(props) {
 
-    /* This adds an eventlistener to the whole homepage to remove the cart,will be added to all pages, a better
-        alternative should be found */
-    function closecart() {
-        if(props.iscartopen == true){
-            props.setiscartopen(false);
-            /* alert('closed') */
-        } 
-    }
-    useEffect(()=>{
-        let home = document.querySelector('.home');
-        home.onclick= function(){
-            closecart() ;
-        }
-    },[props.iscartopen]);
+    const [currentthumbnail,setcurrentthumbnail] = useState({
+        img5:true,
+        img6:false,
+        img7:false,
+        img8:false
+    })
 
+    const [currentimg ,setcurrentimg] = useState(image1)
+
+    function changecurrent(e){
+        if(e.target.className.includes('image5')){
+            setcurrentimg(image1);
+            setcurrentthumbnail({
+                img5:true , img6:false, img7:false, img8:false
+            })
+        }else if(e.target.className.includes('image6')){
+            setcurrentimg(image2);
+            setcurrentthumbnail({
+                img5:false , img6:true, img7:false, img8:false
+            })
+        }else if(e.target.className.includes('image7')){            
+            setcurrentimg(image3);
+            setcurrentthumbnail({
+                img5:false, img6:false, img7:true, img8:false
+            })
+        }else if(e.target.className.includes('image8')){            
+            setcurrentimg(image4);
+            setcurrentthumbnail({
+                img5:false , img6:false, img7:false, img8:true
+            })
+        }
+    }
+
+
+    /* This listens to the whole homepage to remove the cart,will be added to all pages, a better    
+    alternative should be found */
+    function closecart(e) {
+        let state = e.target.className;
+        if(!state.includes('additem')&&!state.includes('addtocartxt')&&!state.includes('cartimg')&&props.iscartopen == true ){            
+                props.setiscartopen(false);            
+            
+        }    
+    }
+
+    
 
     return (
-    <div className="home" >      
+    <div className="home" onClick = {closecart} >      
       <section className='homeimgs'>
-        <img src = {image1 } className='image1' alt='Image on display' />
-        <img src = {image5}  className = 'image5 thumbnail-img' />
-        <img src = {image6} className = 'image6 thumbnail-img' />
-        <img src = {image7} className = 'image7 thumbnail-img' />
-        <img src = {image8} className = 'image8 thumbnail-img' />
-      </section>
+        <img src = {currentimg } className='image1' alt='Image on display' />
+        <img src = {image5} className = {`image5 thumbnail-img ${currentthumbnail.img5? 'currentimg':''} ` } 
+           onClick = {changecurrent} />
+        <img src = {image6} className = {`image6 thumbnail-img ${currentthumbnail.img6? 'currentimg':''} ` } 
+           onClick = {changecurrent} />
+        <img src = {image7} className = {`image7 thumbnail-img ${currentthumbnail.img7? 'currentimg':''} ` } 
+           onClick = {changecurrent} />
+        <img src = {image8} className = {`image8 thumbnail-img ${currentthumbnail.img8? 'currentimg':''} ` } 
+           onClick = {changecurrent} />
+      </section>      
       <section className='hometxt'>
          <h1>SNEAKER COMPANY</h1>
          <h2>Fall Limited Edition Sneakers</h2>
@@ -53,19 +87,37 @@ function Home(props) {
          <h3>$125.00 <span>50%</span></h3>
          <h4>$250.00</h4>
          <div className='check'> 
-           <div className='pricing'>
-              <img src= {minus} />
-              0
-              <img src= {plus} />
-           </div>
-           
+            <Countqtty qtty = {props.qtty} setqtty = {props.setqtty} />
+
            <Addtocart iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image5} 
-            itemname = 'Autumn Edition Limited Sneakers' />
+            itemname = 'Autumn Edition Limited Sneakers' qtty={props.qtty} setqtty={props.setqtty} 
+            cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter}     />
 
          </div>
       </section>
     </div>
   );
 }
+
+//making the quantity increase a component incase it needs to be reused
+function Countqtty(props){    
+
+    function increase(){        
+        props.setqtty(props.qtty+1);                       
+    }
+    function decrease() {
+        props.setqtty(props.qtty-1);
+    }
+    
+
+    return(
+        <div className='pricing'>
+            <img src= {minus} className='minus cursor' onClick={decrease} />
+            <span className='countqtty'>{props.qtty}</span>
+            <img src= {plus} className='plus cursor' onClick = {increase} />
+        </div>
+    )
+}
+
 
 export default Home;

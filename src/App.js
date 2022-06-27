@@ -10,14 +10,24 @@ import ShoppingCart from './components/shoppingcart';
 function App() {
 
   
-  const [iscartopen,setiscartopen] = useState(false)
-  const [cart,setCart] = useState({});
+  const [iscartopen,setiscartopen] = useState(false); // currently used in Addtocart
+  const [cart,setCart] = useState({}); //not used yet
+
+  const [cartcounter,setcartcounter] = useState(0); //currently increased in Addtocart and read in Nav(top of cartimg)
+  
+  const [qtty,setqtty] = useState(0); //currently used in Countqtty inside home
+  //every sellable item in the shop page should have this of their own which their add to cart button will eventuallly read from
+
+
   return (
     <div className="App">            
       <BrowserRouter>
-            <Nav iscartopen={iscartopen} setiscartopen={setiscartopen} />
+            <Nav iscartopen={iscartopen} setiscartopen={setiscartopen} cartcounter = {cartcounter} />
             <Routes>
-                <Route path = '/' element = { <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} /> } />                
+                <Route path = '/' element = { 
+                  <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
+                  cartcounter = {cartcounter} setcartcounter = {setcartcounter}  /> 
+                } />                
             </Routes>
         </BrowserRouter>      
             

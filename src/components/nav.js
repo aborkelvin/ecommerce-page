@@ -7,10 +7,19 @@ import './nav.css';
 import ShoppingCart from './shoppingcart';
 
 function Nav(props){
+    
+    function showcart() {
+        //if set to true, the showcart class is added to the shopping cart div making the display block
+        if(props.iscartopen == false){
+            props.setiscartopen(true);
+        }else{
+            props.setiscartopen(false)
+        }
+    }
 
     return(
         <div className='nav-container'>            
-            <img src={logo} className='logo'/>
+            <img src={logo} className='logo' />
             <nav>
                 <ul>
                     <li><a href='#'>Collections</a></li>
@@ -18,7 +27,8 @@ function Nav(props){
                     <li><a href='#'>Men</a></li>
                 </ul>
             </nav>
-            <img src = {cartimg} className = 'cartimg'/>
+            <img src = {cartimg} className = 'cartimg cursor' onClick = {showcart} />
+            <div className= 'cartcounter cursor' onClick = {showcart}>{props.cartcounter}</div>
             <img src = {avatar} className = 'avatar' />
             <ShoppingCart iscartopen={props.iscartopen} setiscartopen = {props.setiscartopen} />
         </div>

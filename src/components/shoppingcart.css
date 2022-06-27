@@ -19,27 +19,54 @@
     font-size: 20px;
 }
 
+
 .basket-content>ul{
     padding-left:10px ;
 }
 
 .basket-content li{
     list-style: none;
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
+    display: block;    
+    margin: 10px 0;
+    height: 50px;
+    position: relative;
 }
 
-.item>img{
+.itemimg{
     width: 50px;
     border-radius: 5px;
     margin: 0 5px;
 }
-.item>span{
+.itemname{
     font-size: 18px;
-    align-self: flex-start;
+    position: absolute;
+    top: 3px;
 }
 
 .deletebtn{
-    align-self: flex-start;
+    border-radius: 5px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.figures{
+    position: relative;    
+    bottom: 2px;
+}
+
+
+
+
+.basket-content button{
+    width: 70%;
+    margin:30px auto;
+    background-color: var(--orange);
+    color: white;
+    display: block;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 20px;
+    border: none;
+    font-weight: 700;
 }
