@@ -4,6 +4,11 @@ import { useState,useEffect } from 'react';
 import image9 from '../images/image-product-1-thumbnail.jpg';
 import { Countqtty } from '../home';
 
+
+const Input = () => {
+  return <input placeholder="Your input here" className='input'  />;
+};
+
 function ShoppingCart(props){
 
   //currently used in Countqtty inside home
@@ -12,13 +17,15 @@ function ShoppingCart(props){
 
   const [children,setchildren] = useState([])
 
-  //why did this stop working
+  function onAddBtnClick() {
+    setchildren(children.concat(<Input key={children.length} />));
+  };
 
   return(
     <div className = { `shoppingcart ${props.iscartopen?"showcart" : ""}` } >
         <h2>Cart</h2>
         <hr></hr>
-        <button>Add child</button>
+        <button onClick = {onAddBtnClick} >Add child</button>
 
         <div className= 'basket-content'>
             <ul className='basket'>
@@ -30,6 +37,7 @@ function ShoppingCart(props){
                     <span className = 'subtotal figures'>  $375.00</span>
                     
                 </li> */}
+                {children}
             </ul>
             <button className= 'cursor checkout'>Checkout</button>
         </div>
