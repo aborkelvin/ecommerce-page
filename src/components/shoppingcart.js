@@ -6,26 +6,30 @@ import { Countqtty } from '../home';
 
 function ShoppingCart(props){
 
-  /* //currently used in Countqtty inside home
+  //currently used in Countqtty inside home
   const [qtty,setqtty] = useState(1); 
   //This is a duplicate brought here to try adding it to cart
 
-  const [children,setchildren] = useState([]) */
+  const [children,setchildren] = useState([])
+
+  //why did this stop working
 
   return(
     <div className = { `shoppingcart ${props.iscartopen?"showcart" : ""}` } >
         <h2>Cart</h2>
         <hr></hr>
+        <button>Add child</button>
+
         <div className= 'basket-content'>
             <ul className='basket'>
-                <li className='item'>
+                {/* <li className='item'>
                     <img src={image9} alt = 'shoe image' className=' itemimg' height = '50px'/>
                     <span className='itemname'>Fall limited Edition Sneakers</span>
                     <span className='price figures'>$125.00</span>
                     <span className='quantity figures'>  x 3</span>
                     <span className = 'subtotal figures'>  $375.00</span>
-                    {/* <Countqtty qtty={qtty} setqtty = {setqtty} /> */}
-                </li>
+                    
+                </li> */}
             </ul>
             <button className= 'cursor checkout'>Checkout</button>
         </div>
