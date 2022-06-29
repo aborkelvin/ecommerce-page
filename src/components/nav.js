@@ -5,6 +5,7 @@ import cartimg from '../images/icon-cart.svg';
 import avatar from '../images/image-avatar.png'
 import './nav.css';
 import ShoppingCart from './shoppingcart';
+import { Link } from 'react-router-dom';
 
 function Nav(props){
     
@@ -22,7 +23,12 @@ function Nav(props){
             <img src={logo} className='logo' />
             <nav>
                 <ul>
-                    <li><a href='#'>Collections</a></li>
+                    <Link to = '/shop'>
+                        <li>Shop</li> 
+                    </Link>
+                    <Link to = '/'>
+                        <li>Collections</li>
+                    </Link>
                     <li><a href='#'>Women</a></li>
                     <li><a href='#'>Men</a></li>
                 </ul>

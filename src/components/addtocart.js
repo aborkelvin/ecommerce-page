@@ -4,6 +4,7 @@ import { useState,useEffect } from 'react';
 import image5 from '../images/image-product-1-thumbnail.jpg';
 import cartimg from '../images/icon-cart.svg';
 import deleteimg from '../images/deletebtn.svg';
+import { Countqtty } from '../home';
 
 function Addtocart(props){
     
@@ -63,6 +64,23 @@ function Addtocart(props){
             <img src= {cartimg} id='cartimg' />
             <span className = 'addtocartxt' >Add to cart</span>
         </div>
+    )
+}
+
+
+
+function Createcontent(props){
+
+    return(
+        <li className = 'item'>
+            <img src = {props.itemimg} className = 'itemimg' />
+            <span className = 'itemname' >{props.itemname}</span>
+            <img src = {deleteimg} className = 'deletebtn cursor' />
+            <span className = 'price figures' > $150.00 </span>
+            <span className = 'quantity figures' > {` x ${props.qtty}`} </span>
+            <span className = 'subtotal figures' > {` $${ 150 * props.qtty}`} </span>
+            <Countqtty />
+        </li>
     )
 }
 

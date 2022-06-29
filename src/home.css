@@ -6,11 +6,11 @@
     --myownor: hsl(22,100%,50%);
  }
 
- html, body {width: auto!important; overflow-x: hidden!important} 
+ html, body {width: auto!important;} 
  
  .home {
     display: flex;
-    padding: 80px 30px;
+    padding: 30px;
     justify-content: center;
 }
 

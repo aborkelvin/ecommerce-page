@@ -1,3 +1,7 @@
 .cursor:hover{
   cursor: pointer;
 }
+
+.App{
+  height: 100%;
+}

@@ -5,6 +5,7 @@ import { useState,useEffect } from 'react';
 import Nav from "./components/nav";
 import Home from "./home";
 import ShoppingCart from './components/shoppingcart';
+import Shop from './components/shop';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
 
   const [cartcounter,setcartcounter] = useState(0); //currently increased in Addtocart and read in Nav(top of cartimg)
   
-  const [qtty,setqtty] = useState(0); //currently used in Countqtty inside home
+  const [qtty,setqtty] = useState(1); //currently used in Countqtty inside home
   //every sellable item in the shop page should have this of their own which their add to cart button will eventuallly read from
 
 
@@ -27,6 +28,10 @@ function App() {
                 <Route path = '/' element = { 
                   <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
                   cartcounter = {cartcounter} setcartcounter = {setcartcounter}  /> 
+                } />   
+                <Route path = '/shop' element = { 
+                  <Shop iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
+                  cartcounter = {cartcounter} setcartcounter = {setcartcounter}/>
                 } />                
             </Routes>
         </BrowserRouter>      

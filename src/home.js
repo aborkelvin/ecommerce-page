@@ -121,3 +121,4 @@ function Countqtty(props){
 
 
 export default Home;
+export {Countqtty}
