@@ -7,7 +7,6 @@ import deleteimg from '../images/deletebtn.svg';
 import { Countqtty } from '../home';
 
 function Addtocart(props){
-    /* const [qtty,setqtty] = useState(1);  */
 
     const [children,setchildren] = [props.children,props.setchildren];
 
