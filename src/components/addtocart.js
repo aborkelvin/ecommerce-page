@@ -7,7 +7,9 @@ import deleteimg from '../images/deletebtn.svg';
 import { Countqtty } from '../home';
 
 function Addtocart(props){
-    
+    /* const [qtty,setqtty] = useState(1);  */
+
+    const [children,setchildren] = [props.children,props.setchildren];
 
     const addtocart = () => {                       
         //if set to true, the showcart class is added to the shopping cart div making the display block
@@ -15,7 +17,7 @@ function Addtocart(props){
             props.setiscartopen(true);
         }
         
-        //This should create the elements used to display the cart items and add it to cart
+        /* //This should create the elements used to display the cart items and add it to cart
         let li = document.createElement('li');
         li.classList.add('item');
         
@@ -52,15 +54,20 @@ function Addtocart(props){
         li.appendChild(price)
         li.appendChild(quantity)
         li.appendChild(subtotal)
-        basket.appendChild(li);
+        basket.appendChild(li); */
 
         props.setcartcounter(props.cartcounter + 1);
+
+
+        setchildren(children.concat(<Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
+            qtty = {props.qtty} setqtty = {props.setqtty} />));
+
 
     }
 
 
     return(
-        <div className= 'additem cursor' onClick = {addtocart}>
+        <div className= 'additem cursor' onClick = {addtocart} >
             <img src= {cartimg} id='cartimg' />
             <span className = 'addtocartxt' >Add to cart</span>
         </div>
@@ -79,9 +86,11 @@ function Createcontent(props){
             <span className = 'price figures' > $150.00 </span>
             <span className = 'quantity figures' > {` x ${props.qtty}`} </span>
             <span className = 'subtotal figures' > {` $${ 150 * props.qtty}`} </span>
-            <Countqtty />
+            <Countqtty qtty = {props.qtty} setqtty = {props.setqtty} />
         </li>
     )
 }
 
 export default Addtocart;
+
+export {Createcontent}

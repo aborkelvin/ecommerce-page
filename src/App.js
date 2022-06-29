@@ -19,11 +19,14 @@ function App() {
   const [qtty,setqtty] = useState(1); //currently used in Countqtty inside home
   //every sellable item in the shop page should have this of their own which their add to cart button will eventuallly read from
 
+  const [children,setchildren] = useState([])// used in shopping cart to append li components
+
 
   return (
     <div className="App">            
       <BrowserRouter>
-            <Nav iscartopen={iscartopen} setiscartopen={setiscartopen} cartcounter = {cartcounter} />
+            <Nav iscartopen={iscartopen} setiscartopen={setiscartopen} cartcounter = {cartcounter} children = {children}
+            setchildren = {setchildren} />
             <Routes>
                 <Route path = '/' element = { 
                   <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
@@ -31,7 +34,8 @@ function App() {
                 } />   
                 <Route path = '/shop' element = { 
                   <Shop iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
-                  cartcounter = {cartcounter} setcartcounter = {setcartcounter}/>
+                  cartcounter = {cartcounter} setcartcounter = {setcartcounter} children = {children}
+                  setchildren = {setchildren} />
                 } />                
             </Routes>
         </BrowserRouter>      

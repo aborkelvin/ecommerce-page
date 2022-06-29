@@ -36,7 +36,8 @@ function Nav(props){
             <img src = {cartimg} className = 'cartimg cursor' onClick = {showcart} />
             <div className= 'cartcounter cursor' onClick = {showcart}>{props.cartcounter}</div>
             <img src = {avatar} className = 'avatar' />
-            <ShoppingCart iscartopen={props.iscartopen} setiscartopen = {props.setiscartopen} />
+            <ShoppingCart iscartopen={props.iscartopen} setiscartopen = {props.setiscartopen} children = {props.children}
+            setchildren = {props.setchildren} />
         </div>
     )
 }

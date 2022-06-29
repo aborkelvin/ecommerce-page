@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 
 import image9 from '../images/image-product-1-thumbnail.jpg';
 import { Countqtty } from '../home';
+import { Createcontent } from './addtocart';
 
 
 const Input = () => {
@@ -15,10 +16,10 @@ function ShoppingCart(props){
   const [qtty,setqtty] = useState(1); 
   //This is a duplicate brought here to try adding it to cart
 
-  const [children,setchildren] = useState([])
+  const [children,setchildren] = [props.children,props.setchildren];
 
   function onAddBtnClick() {
-    setchildren(children.concat(<Input key={children.length} />));
+    setchildren(children.concat(<Createcontent key={children.length} itemname = {'dubem'}  itemimg = {image9} />));
   };
 
   return(
