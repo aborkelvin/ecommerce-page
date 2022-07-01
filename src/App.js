@@ -26,7 +26,7 @@ function App() {
     <div className="App">            
       <BrowserRouter>
             <Nav iscartopen={iscartopen} setiscartopen={setiscartopen} cartcounter = {cartcounter} children = {children}
-            setchildren = {setchildren} />
+            setchildren = {setchildren}  qtty={qtty} setqtty={setqtty} />
             <Routes>
                 <Route path = '/' element = { 
                   <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 

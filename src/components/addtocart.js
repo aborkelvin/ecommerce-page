@@ -6,9 +6,15 @@ import cartimg from '../images/icon-cart.svg';
 import deleteimg from '../images/deletebtn.svg';
 import { Countqtty } from '../home';
 
+import minus from '../images/icon-minus.svg';
+import plus from '../images/icon-plus.svg';
+
+
 function Addtocart(props){
 
     const [children,setchildren] = [props.children,props.setchildren];
+
+    const [qtty,setqtty] = useState(5); 
 
     const addtocart = () => {                       
         //if set to true, the showcart class is added to the shopping cart div making the display block
@@ -55,7 +61,7 @@ function Addtocart(props){
         li.appendChild(subtotal)
         basket.appendChild(li); */
 
-        props.setcartcounter(props.cartcounter + 1);
+        //props.setcartcounter(props.cartcounter + 1);
 
 
         setchildren(children.concat(<Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
@@ -93,3 +99,28 @@ function Createcontent(props){
 export default Addtocart;
 
 export {Createcontent}
+
+
+
+
+
+
+
+const Count = (props) =>{    
+
+    function increase(){        
+        props.setqtty(prevState => prevState+1);                   
+    }
+    function decrease() {
+        props.setqtty(props.qtty-1);
+    }
+    
+
+    return(
+        <div className='pricing'>
+            <img src= {minus} className='minus cursor' onClick={decrease} />
+            <span className='countqtty'>{props.qtty}</span>
+            <img src= {plus} className='plus cursor' onClick = {increase} />
+        </div>
+    )
+}
