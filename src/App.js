@@ -25,11 +25,11 @@ function App() {
       <BrowserRouter>
             <Nav iscartopen={iscartopen} setiscartopen={setiscartopen} cartcounter = {cartcounter} />
             <Routes>
-                <Route path = '/' element = { 
+                <Route path = '/ecommerce-page' element = { 
                   <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
                   cartcounter = {cartcounter} setcartcounter = {setcartcounter}  /> 
                 } />   
-                <Route path = '/shop' element = { 
+                <Route path = '/ecommerce-page/shop' element = { 
                   <Shop iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
                   cartcounter = {cartcounter} setcartcounter = {setcartcounter}/>
                 } />                
