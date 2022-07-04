@@ -65,7 +65,7 @@ function Addtocart(props){
 
 
         setchildren([...children, <Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
-            qtty = {props.qtty} setqtty = {props.setqtty} />]);
+            qtty = {qtty} setqtty = {setqtty} />]);
 
 
     }
@@ -83,15 +83,17 @@ function Addtocart(props){
 
 function Createcontent(props){
 
+    const [qtty,setqtty] = useState(1); 
+
     return(
         <li className = 'item'>
             <img src = {props.itemimg} className = 'itemimg' />
             <span className = 'itemname' >{props.itemname}</span>
             <img src = {deleteimg} className = 'deletebtn cursor' />
             <span className = 'price figures' > $150.00 </span>
-            <span className = 'quantity figures' > {` x ${props.qtty}`} </span>
-            <span className = 'subtotal figures' > {` $${ 150 * props.qtty}`} </span>
-            <Countqtty qtty = {props.qtty} setqtty = {props.setqtty} />
+            <span className = 'quantity figures' > {` x ${qtty}`} </span>
+            <span className = 'subtotal figures' > {` $${ 150 * qtty}`} </span>
+            <Count qtty = {qtty} setqtty = {setqtty} />
         </li>
     )
 }
