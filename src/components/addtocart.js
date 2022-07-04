@@ -65,7 +65,7 @@ function Addtocart(props){
 
 
         setchildren([...children, <Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
-            qtty = {qtty} setqtty = {setqtty} />]);
+            qtty = {qtty} setqtty = {setqtty} price = {props.price} />]);
 
 
     }
@@ -85,14 +85,18 @@ function Createcontent(props){
 
     const [qtty,setqtty] = useState(1); 
 
+    var currency = props.price;
+    currency = currency.replace(/[$]/,"");
+    currency = Number(currency);
+
     return(
         <li className = 'item'>
             <img src = {props.itemimg} className = 'itemimg' />
             <span className = 'itemname' >{props.itemname}</span>
             <img src = {deleteimg} className = 'deletebtn cursor' />
-            <span className = 'price figures' > $150.00 </span>
+            <span className = 'price figures' > {props.price} </span>
             <span className = 'quantity figures' > {` x ${qtty}`} </span>
-            <span className = 'subtotal figures' > {` $${ 150 * qtty}`} </span>
+            <span className = 'subtotal figures' > {` $${ currency * qtty}`} </span>
             <Count qtty = {qtty} setqtty = {setqtty} />
         </li>
     )

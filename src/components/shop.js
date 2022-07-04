@@ -26,30 +26,30 @@ function Shop(props){
              iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image1} 
              qtty={props.qtty} setqtty={props.setqtty} 
              cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter}  
-             children = {props.children} setchildren = {props.setchildren} />
+             children = {props.children} setchildren = {props.setchildren} price= '$300' />
 
             <Saleitem  img = {image3} name='Nike Airforce 1 Supreme White' 
              iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image1} qtty={props.qtty} 
              setqtty={props.setqtty} cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter} 
-             children = {props.children} setchildren = {props.setchildren}/>
+             children = {props.children} setchildren = {props.setchildren} price= '$250' />
 
             <Saleitem  img = {image5} name='Air Jordan 1 Mid White Black Royal' 
             iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image1} 
             qtty={props.qtty} setqtty={props.setqtty} 
             cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter}  
-            children = {props.children} setchildren = {props.setchildren}/>
+            children = {props.children} setchildren = {props.setchildren} price= '$109' />
 
             <Saleitem  img = {image6} name='Nike Airforce 1 UV Reactive swoosh' 
             iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image1} 
             qtty={props.qtty} setqtty={props.setqtty} 
             cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter} 
-            children = {props.children} setchildren = {props.setchildren}/>            
+            children = {props.children} setchildren = {props.setchildren} price= '$350' />    
             
             <Saleitem  img = {image7} name='Nike Airforce 1 Supreme Black'  
             iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image1} 
              qtty={props.qtty} setqtty={props.setqtty} 
             cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter}
-            children = {props.children} setchildren = {props.setchildren}/>
+            children = {props.children} setchildren = {props.setchildren} price= '$170' />
         </div>
     )
 }
@@ -64,7 +64,7 @@ function Saleitem(props){
             <Addtocart iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={props.img} 
             itemname = {props.name} qtty={props.qtty} setqtty={props.setqtty} 
             cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter} children = {props.children}
-            setchildren = {props.setchildren} />
+            setchildren = {props.setchildren} price = {props.price} />
         </div>
     )
 }
