@@ -25,7 +25,6 @@ function ShoppingCart(props){
                     <span className='quantity figures'>  x 3</span>
                     <span className = 'subtotal figures'>  $375.00</span>
                 </li> */}
-                Hello
             </ul>
             <button className= 'cursor checkout'>Checkout</button>
         </div>
