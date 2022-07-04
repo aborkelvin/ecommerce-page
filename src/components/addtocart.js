@@ -64,8 +64,8 @@ function Addtocart(props){
         //props.setcartcounter(props.cartcounter + 1);
 
 
-        setchildren(children.concat(<Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
-            qtty = {props.qtty} setqtty = {props.setqtty} />));
+        setchildren([...children, <Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
+            qtty = {props.qtty} setqtty = {props.setqtty} />]);
 
 
     }
