@@ -32,15 +32,19 @@ function Addtocart(props){
         deletebtn.classList.add('deletebtn','cursor');
 
         let price = document.createElement('span');
-        price.innerText = '$150.00';
+        price.innerText = `${props.price}`;
         price.classList.add('price','figures')
 
         let quantity = document.createElement('span');
         quantity.innerText = ` x ${props.qtty}`;
-        quantity.classList.add('quantity','figures')
+        quantity.classList.add('quantity','figures');
+
+        var currency = props.price;
+        currency = currency.replace(/[$]+/g,"");
+        currency = parseFloat(currency);
 
         let subtotal = document.createElement('span');
-        subtotal.innerText =  ` $${ 150 * props.qtty}`;
+        subtotal.innerText =  ` $${ currency * props.qtty}`;
         subtotal.classList.add('subtotal','figures')
 
 

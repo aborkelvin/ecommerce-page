@@ -91,7 +91,7 @@ function Home(props) {
 
            <Addtocart iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image5} 
             itemname = 'Autumn Edition Limited Sneakers' qtty={props.qtty} setqtty={props.setqtty} 
-            cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter}     />
+            cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter} price = '$109' />
 
          </div>
       </section>
