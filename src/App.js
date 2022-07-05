@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useRef } from 'react';
 
 import Nav from "./components/nav";
 import Home from "./home";
@@ -22,11 +22,34 @@ function App() {
   const [children,setchildren] = useState([])// used in shopping cart to append li components
 
 
+  const [total,settotal] = useState(0)
+
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
+  const prevtotal = usePrevious(total);
+
+  const childtoparent = (childdata) =>{
+    console.log(prevtotal)
+    
+    settotal(total+childdata);
+    
+    console.log(childdata);
+    console.log(total)
+  }
+
+
   return (
     <div className="App">            
       <BrowserRouter>
             <Nav iscartopen={iscartopen} setiscartopen={setiscartopen} cartcounter = {cartcounter} children = {children}
-            setchildren = {setchildren}  qtty={qtty} setqtty={setqtty} />
+            setchildren = {setchildren}  qtty={qtty} setqtty={setqtty} childtoparent = {childtoparent}  
+            total = {total} settotal = {settotal}   />
             <Routes>
                 <Route path = '/ecommerce-page/shop' element = { 
                   <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
@@ -35,7 +58,7 @@ function App() {
                 <Route path = '/ecommerce-page' element = { 
                   <Shop iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
                   cartcounter = {cartcounter} setcartcounter = {setcartcounter} children = {children}
-                  setchildren = {setchildren} />
+                  setchildren = {setchildren} childtoparent = {childtoparent} />
                 } />                
             </Routes>
         </BrowserRouter>      

@@ -9,9 +9,11 @@ import { Createcontent } from './addtocart';
 
 function ShoppingCart(props){
 
-  
+  const [total,settotal] = [props.total,props.settotal];
 
   const [children,setchildren] = [props.children,props.setchildren];
+
+
 
   return(
     <div className = { `shoppingcart ${props.iscartopen?"showcart" : ""}` } >
@@ -31,6 +33,8 @@ function ShoppingCart(props){
                 </li> */}
                 {children}
             </ul>
+            
+            <h3>Total: {total}</h3>
             <button className= 'cursor checkout'>Checkout</button>
         </div>
     

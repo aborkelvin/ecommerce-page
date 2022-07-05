@@ -1,6 +1,6 @@
 import './addtocart.css'
 
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useRef } from 'react';
 import image5 from '../images/image-product-1-thumbnail.jpg';
 import cartimg from '../images/icon-cart.svg';
 import deleteimg from '../images/deletebtn.svg';
@@ -65,7 +65,8 @@ function Addtocart(props){
 
 
         setchildren([...children, <Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
-            qtty = {qtty} setqtty = {setqtty} price = {props.price} />]);
+            qtty = {qtty} setqtty = {setqtty} price = {props.price} childtoparent = {props.childtoparent}
+            />]);
 
 
     }
@@ -89,8 +90,15 @@ function Createcontent(props){
     currency = currency.replace(/[$]/,"");
     currency = Number(currency);
 
+
+    useEffect(()=>{
+        let subtotal = currency * qtty;
+        props.childtoparent(subtotal)
+    },[qtty])
+    
+
     return(
-        <li className = 'item'>
+        <li className = 'item' /* onClick = {() =>props.childtoparent(datasent)} */ > 
             <img src = {props.itemimg} className = 'itemimg' />
             <span className = 'itemname' >{props.itemname}</span>
             <img src = {deleteimg} className = 'deletebtn cursor' />
@@ -115,7 +123,7 @@ export {Createcontent}
 const Count = (props) =>{    
 
     function increase(){        
-        props.setqtty(prevState => prevState+1);                   
+        props.setqtty(props.qtty+1);                   
     }
     function decrease() {
         props.setqtty(props.qtty-1);
