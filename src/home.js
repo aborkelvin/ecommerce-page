@@ -1,5 +1,8 @@
 import './home.css';
-import Addtocart from './components/addtocart';
+//import Addtocart from './components/addtocart';
+import cartimg from './images/icon-cart.svg';
+import deleteimg from './images/deletebtn.svg';
+
 import { useState,useEffect } from 'react';
 
 import image1 from './images/image-product-1.jpg'
@@ -100,10 +103,10 @@ function Home(props) {
 }
 
 //making the quantity increase a component incase it needs to be reused
-function Countqtty(props){    
+const Countqtty = (props) =>{    
 
     function increase(){        
-        props.setqtty(props.qtty+1);                       
+        props.setqtty(prevState => prevState+1);                   
     }
     function decrease() {
         props.setqtty(props.qtty-1);
@@ -122,3 +125,85 @@ function Countqtty(props){
 
 export default Home;
 export {Countqtty}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function Addtocart(props){
+
+    const [children,setchildren] = [props.children,props.setchildren];
+
+    const addtocart = () => {                       
+        //if set to true, the showcart class is added to the shopping cart div making the display block
+        if(props.iscartopen == false){
+            props.setiscartopen(true);
+        }
+        
+         //This should create the elements used to display the cart items and add it to cart
+        let li = document.createElement('li');
+        li.classList.add('item');
+        
+        let itemimg = new Image(50,50);
+        itemimg.src = props.itemimg;  
+        itemimg.classList.add('itemimg')
+        
+        let itemname = document.createElement('span');
+        itemname.innerText = props.itemname;
+        itemname.classList.add('itemname')
+
+        let deletebtn = new Image(20,20);
+        deletebtn.src= deleteimg;
+        deletebtn.classList.add('deletebtn','cursor');
+
+        let price = document.createElement('span');
+        price.innerText = '$150.00';
+        price.classList.add('price','figures')
+
+        let quantity = document.createElement('span');
+        quantity.innerText = ` x ${props.qtty}`;
+        quantity.classList.add('quantity','figures')
+
+        let subtotal = document.createElement('span');
+        subtotal.innerText =  ` $${ 150 * props.qtty}`;
+        subtotal.classList.add('subtotal','figures')
+
+
+
+        let basket = document.querySelector('.basket');
+        li.appendChild(itemimg);
+        li.appendChild(itemname);
+        li.appendChild(deletebtn);
+        li.appendChild(price)
+        li.appendChild(quantity)
+        li.appendChild(subtotal)
+        basket.appendChild(li); 
+
+        props.setcartcounter(props.cartcounter + 1);
+
+
+        /* setchildren(children.concat(<Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
+            qtty = {props.qtty} />)); */
+
+
+    }
+
+
+    return(
+        <div className= 'additem cursor' onClick = {addtocart} >
+            <img src= {cartimg} id='cartimg' />
+            <span className = 'addtocartxt' >Add to cart</span>
+        </div>
+    )
+}
+
+

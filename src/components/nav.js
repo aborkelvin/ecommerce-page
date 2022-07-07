@@ -23,10 +23,10 @@ function Nav(props){
             <img src={logo} className='logo' />
             <nav>
                 <ul>
-                    <Link to = '/ecommerce-page'>
+                    <Link to = '/ecommerce-page/shop'>
                         <li>Shop</li> 
                     </Link>
-                    <Link to = '/ecommerce-page/shop'>
+                    <Link to = '/ecommerce-page'>
                         <li>Collections</li>
                     </Link>
                     <li><a href='#'>Women</a></li>
@@ -36,7 +36,9 @@ function Nav(props){
             <img src = {cartimg} className = 'cartimg cursor' onClick = {showcart} />
             <div className= 'cartcounter cursor' onClick = {showcart}>{props.cartcounter}</div>
             <img src = {avatar} className = 'avatar' />
-            <ShoppingCart iscartopen={props.iscartopen} setiscartopen = {props.setiscartopen} />
+            <ShoppingCart iscartopen={props.iscartopen} setiscartopen = {props.setiscartopen} children = {props.children}
+            setchildren = {props.setchildren} qtty={props.qtty} setqtty = {props.setqtty} childtoparent = {props.childtoparent}  
+            total = {props.total} settotal = {props.settotal} />
         </div>
     )
 }
