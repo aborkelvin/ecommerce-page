@@ -24,7 +24,7 @@ function App() {
 
   const [total,settotal] = useState(0)
 
-  function usePrevious(value) {
+/*   function usePrevious(value) {
     const ref = useRef();
     useEffect(() => {
       ref.current = value;
@@ -33,11 +33,12 @@ function App() {
   }
 
   const prevtotal = usePrevious(total);
+ */
 
   const childtoparent = (childdata) =>{
-    console.log(prevtotal)
+    //console.log(prevtotal)
     
-    settotal(total+childdata);
+    settotal(total+ 1000);
     
     console.log(childdata);
     console.log(total)
@@ -58,7 +59,8 @@ function App() {
                 <Route path = '/ecommerce-page' element = { 
                   <Shop iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
                   cartcounter = {cartcounter} setcartcounter = {setcartcounter} children = {children}
-                  setchildren = {setchildren} childtoparent = {childtoparent} />
+                  setchildren = {setchildren} childtoparent = {childtoparent} 
+                  total = {total} settotal = {settotal} />
                 } />                
             </Routes>
         </BrowserRouter>      

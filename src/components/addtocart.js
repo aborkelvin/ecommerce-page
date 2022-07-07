@@ -65,7 +65,8 @@ function Addtocart(props){
 
 
         setchildren([...children, <Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
-            qtty = {qtty} setqtty = {setqtty} price = {props.price} childtoparent = {props.childtoparent}
+            qtty = {qtty} setqtty = {setqtty} price = {props.price} childtoparent = {props.childtoparent} 
+            total = {props.total} settotal = {props.settotal}
             />]);
 
 
@@ -85,20 +86,41 @@ function Addtocart(props){
 function Createcontent(props){
 
     const [qtty,setqtty] = useState(1); 
+    let [total,settotal] = [props.total,props.settotal]
 
     var currency = props.price;
     currency = currency.replace(/[$]/,"");
     currency = Number(currency);
 
 
-    useEffect(()=>{
-        let subtotal = currency * qtty;
-        props.childtoparent(subtotal)
+    const prevqtty = usePrevious(qtty)
+    useEffect(()=>{ 
+        /*
+        Gets the change in qtty, multiplies it with the currency to get change in amount,
+        if the was no change in qtty(when addtocart is first called),it sets total with the currency else
+        it sets total with the change in amount(this takes care of decrease in qtty)
+        */
+        let qttydifference = qtty - prevqtty;
+        let addingamnt = currency * qttydifference;
+
+        if(isNaN(addingamnt)){
+            updatetotal(currency)
+        }else{
+            updatetotal(addingamnt)
+        }            
+        
     },[qtty])
+
     
+    function updatetotal(current){
+        /* state updating refused to work till I updated it this way,doing it the normal way, it updated them
+        individually, making me have different versions of same state */
+        settotal(total => total+current )
+        
+    }
 
     return(
-        <li className = 'item' /* onClick = {() =>props.childtoparent(datasent)} */ > 
+        <li className = 'item'  >
             <img src = {props.itemimg} className = 'itemimg' />
             <span className = 'itemname' >{props.itemname}</span>
             <img src = {deleteimg} className = 'deletebtn cursor' />
@@ -110,26 +132,20 @@ function Createcontent(props){
     )
 }
 
-export default Addtocart;
-
-export {Createcontent}
-
-
-
-
-
 
 
 const Count = (props) =>{    
-
     function increase(){        
         props.setqtty(props.qtty+1);                   
     }
     function decrease() {
+        if(props.qtty == 0){
+            alert('cant reduce further')
+            return;
+        }
         props.setqtty(props.qtty-1);
     }
     
-
     return(
         <div className='pricing'>
             <img src= {minus} className='minus cursor' onClick={decrease} />
@@ -138,3 +154,20 @@ const Count = (props) =>{
         </div>
     )
 }
+
+
+
+
+//used to get qtty's previous value
+function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value; //assign the value of ref to the argument
+    },[value]); //this code will run when the value of 'value' changes
+    return ref.current; //in the end, return the current ref value.
+}
+
+
+export default Addtocart;
+
+export {Createcontent}
