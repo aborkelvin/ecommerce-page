@@ -23,18 +23,10 @@ function ShoppingCart(props){
 
         <div className= 'basket-content'>
             <ul className='basket'>
-                {/* <li className='item'>
-                    <img src={image9} alt = 'shoe image' className=' itemimg' height = '50px'/>
-                    <span className='itemname'>Fall limited Edition Sneakers</span>
-                    <span className='price figures'>$125.00</span>
-                    <span className='quantity figures'>  x 3</span>
-                    <span className = 'subtotal figures'>  $375.00</span>
-                    
-                </li> */}
                 {children}
             </ul>
             
-            <h3>Total: {total}</h3>
+            <h3 className = 'total' >${total}</h3>
             <button className= 'cursor checkout'>Checkout</button>
         </div>
     

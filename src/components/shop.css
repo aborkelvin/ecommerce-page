@@ -1,6 +1,7 @@
 :root{
     --body-color:#f8f8f8;
     --body-color2: rgb(197, 193, 193);
+    --body-color4: rgb(235, 230, 230);
     --body-color3:wheat;
 }
 
@@ -17,7 +18,7 @@
     max-width: 400px;
     min-width: 280px;
     max-height: 310px;
-    background-color:var(--body-color3);
+    background-color:var(--body-color4);
     color: var(--orange);    
     padding: 10px;
     margin: 10px auto;

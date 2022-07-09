@@ -14,7 +14,7 @@ function Addtocart(props){
 
     const [children,setchildren] = [props.children,props.setchildren];
 
-    const [qtty,setqtty] = useState(5); 
+    //const [qtty,setqtty] = useState(5); 
 
     const addtocart = () => {                       
         //if set to true, the showcart class is added to the shopping cart div making the display block
@@ -65,15 +65,12 @@ function Addtocart(props){
         li.appendChild(subtotal)
         basket.appendChild(li); */
 
-        //props.setcartcounter(props.cartcounter + 1);
-
-
         setchildren([...children, <Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
-            qtty = {qtty} setqtty = {setqtty} price = {props.price} childtoparent = {props.childtoparent} 
-            total = {props.total} settotal = {props.settotal}
+             price = {props.price} childtoparent = {props.childtoparent} 
+            total = {props.total} settotal = {props.settotal} children = {children} setchildren = {setchildren} 
             />]);
 
-
+            props.setcartcounter(props.cartcounter + 1);
     }
 
 
@@ -89,8 +86,10 @@ function Addtocart(props){
 
 function Createcontent(props){
 
+    
     const [qtty,setqtty] = useState(1); 
     let [total,settotal] = [props.total,props.settotal]
+    const [children,setchildren] = [props.children,props.setchildren];
 
     var currency = props.price;
     currency = currency.replace(/[$]/,"");
@@ -123,11 +122,12 @@ function Createcontent(props){
         
     }
 
+
     return(
         <li className = 'item'  >
             <img src = {props.itemimg} className = 'itemimg' />
             <span className = 'itemname' >{props.itemname}</span>
-            <img src = {deleteimg} className = 'deletebtn cursor' />
+            <img src = {deleteimg} className = 'deletebtn cursor'  />
             <span className = 'price figures' > {props.price} </span>
             <span className = 'quantity figures' > {` x ${qtty}`} </span>
             <span className = 'subtotal figures' > {` $${ currency * qtty}`} </span>
@@ -135,6 +135,20 @@ function Createcontent(props){
         </li>
     )
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
