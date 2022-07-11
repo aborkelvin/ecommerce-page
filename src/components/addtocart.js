@@ -14,8 +14,6 @@ function Addtocart(props){
 
     const [children,setchildren] = [props.children,props.setchildren];
 
-    //const [qtty,setqtty] = useState(5); 
-
     const addtocart = () => {                       
         //if set to true, the showcart class is added to the shopping cart div making the display block
         if(props.iscartopen == false){
@@ -65,12 +63,14 @@ function Addtocart(props){
         li.appendChild(subtotal)
         basket.appendChild(li); */
 
-        setchildren([...children, <Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
-             price = {props.price} childtoparent = {props.childtoparent} 
-            total = {props.total} settotal = {props.settotal} children = {children} setchildren = {setchildren} 
-            />]);
-
-            props.setcartcounter(props.cartcounter + 1);
+        const[itemname,itemimg,price]  = [props.itemname,props.itemimg,props.price];        
+        const details = { 
+            itemname : itemname, 
+            itemimg : itemimg,
+            price: price 
+        }        
+        setchildren(children => [...children, details ]);
+        props.setcartcounter(props.cartcounter + 1);
     }
 
 
@@ -110,7 +110,12 @@ function Createcontent(props){
             updatetotal(currency)
         }else{
             updatetotal(addingamnt)
-        }            
+        }
+        
+        //remove item from cart if it's qtty is reduced to zero
+        if(qtty == 0){
+            deletelist(props.itemname)
+        }
         
     },[qtty])
 
@@ -123,11 +128,23 @@ function Createcontent(props){
     }
 
 
+    function deletelist(name){
+        const todos = children.filter(item => item.itemname !== name)        
+        setchildren(todos);
+
+        //remove its price from total
+        let currentamt = currency * qtty;
+        settotal(total => total - currentamt);
+
+        //reduce qtty showing in cart icon
+        props.setcartcounter(props.cartcounter - 1);
+    }
+
     return(
         <li className = 'item'  >
             <img src = {props.itemimg} className = 'itemimg' />
             <span className = 'itemname' >{props.itemname}</span>
-            <img src = {deleteimg} className = 'deletebtn cursor'  />
+            <img src = {deleteimg} className = 'deletebtn cursor' onClick = { () =>{deletelist(props.itemname)} } />
             <span className = 'price figures' > {props.price} </span>
             <span className = 'quantity figures' > {` x ${qtty}`} </span>
             <span className = 'subtotal figures' > {` $${ currency * qtty}`} </span>
@@ -135,12 +152,6 @@ function Createcontent(props){
         </li>
     )
 }
-
-
-
-
-
-
 
 
 
@@ -188,4 +199,4 @@ function usePrevious(value) {
 
 export default Addtocart;
 
-export {Createcontent}
+export {Createcontent,Count}

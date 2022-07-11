@@ -3,17 +3,14 @@ import { useState,useEffect } from 'react';
 
 import image9 from '../images/image-product-1-thumbnail.jpg';
 import { Countqtty } from '../home';
-import { Createcontent } from './addtocart';
+import { Createcontent,Count } from './addtocart';
 
-
+import deleteimg from '../images/deletebtn.svg';
 
 function ShoppingCart(props){
 
   const [total,settotal] = [props.total,props.settotal];
-
   const [children,setchildren] = [props.children,props.setchildren];
-
-
 
   return(
     <div className = { `shoppingcart ${props.iscartopen?"showcart" : ""}` } >
@@ -23,7 +20,16 @@ function ShoppingCart(props){
 
         <div className= 'basket-content'>
             <ul className='basket'>
-                {children}
+              {
+                  children.map(function(item,i){
+                    return (
+                      <Createcontent key={item.itemname} itemname = {item.itemname}  itemimg = {item.itemimg} 
+                      price = {item.price} total = {total} settotal = {settotal} children = {children}
+                      setchildren = {setchildren}  cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter}
+                     />
+                    )
+                  })
+              }
             </ul>
             
             <h3 className = 'total' >${total}</h3>
