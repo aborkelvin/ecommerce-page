@@ -94,7 +94,8 @@ function Home(props) {
 
            <Addtocart iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image5} 
             itemname = 'Autumn Edition Limited Sneakers' qtty={props.qtty} setqtty={props.setqtty} 
-            cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter} price = '$109' />
+            cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter} price = '$109'
+            children = {props.children} setchildren = {props.setchildren}  />
 
          </div>
       </section>
@@ -149,7 +150,7 @@ function Addtocart(props){
             props.setiscartopen(true);
         }
         
-         //This should create the elements used to display the cart items and add it to cart
+       /*   //This should create the elements used to display the cart items and add it to cart
         let li = document.createElement('li');
         li.classList.add('item');
         
@@ -189,10 +190,31 @@ function Addtocart(props){
         basket.appendChild(li); 
 
         props.setcartcounter(props.cartcounter + 1);
+ */
 
+        
 
-        /* setchildren(children.concat(<Createcontent key={children.length} itemname = {props.itemname}  itemimg = {props.itemimg} 
-            qtty = {props.qtty} />)); */
+        const[itemname,itemimg,price,qtty]  = [props.itemname,props.itemimg,props.price,props.qtty];        
+        const details = { 
+            itemname : itemname, 
+            itemimg : itemimg,
+            price: price,
+            qtty: qtty,
+        }
+        
+        /* Prevents multiple items with same names, as the names are the keys and also the unique identifiers 
+            for deleting items
+        */
+        for(let i = 0;i<children.length;i++){
+            if(children[i].itemname == itemname){
+                alert('Item with this name already exists in cart');
+                return                
+            }
+        }
+
+        setchildren(children => [...children, details ]);
+        props.setcartcounter(props.cartcounter + 1);
+
 
 
     }

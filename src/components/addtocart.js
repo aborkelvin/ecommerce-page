@@ -20,55 +20,24 @@ function Addtocart(props){
             props.setiscartopen(true);
         }
         
-        /* //This should create the elements used to display the cart items and add it to cart
-        let li = document.createElement('li');
-        li.classList.add('item');
         
-        let itemimg = new Image(50,50);
-        itemimg.src = props.itemimg;  
-        itemimg.classList.add('itemimg')
-        
-        let itemname = document.createElement('span');
-        itemname.innerText = props.itemname;
-        itemname.classList.add('itemname')
-
-        let deletebtn = new Image(20,20);
-        deletebtn.src= deleteimg;
-        deletebtn.classList.add('deletebtn','cursor');
-
-        let price = document.createElement('span');
-        price.innerText = `${props.price}`;
-        price.classList.add('price','figures')
-
-        let quantity = document.createElement('span');
-        quantity.innerText = ` x ${props.qtty}`;
-        quantity.classList.add('quantity','figures');
-
-        var currency = props.price;
-        currency = currency.replace(/[$]+/g,"");
-        currency = parseFloat(currency);
-
-        let subtotal = document.createElement('span');
-        subtotal.innerText =  ` $${ currency * props.qtty}`;
-        subtotal.classList.add('subtotal','figures')
-
-
-
-        let basket = document.querySelector('.basket');
-        li.appendChild(itemimg);
-        li.appendChild(itemname);
-        li.appendChild(deletebtn);
-        li.appendChild(price)
-        li.appendChild(quantity)
-        li.appendChild(subtotal)
-        basket.appendChild(li); */
-
         const[itemname,itemimg,price]  = [props.itemname,props.itemimg,props.price];        
         const details = { 
             itemname : itemname, 
             itemimg : itemimg,
             price: price 
-        }        
+        }
+        
+        /* Prevents multiple items with same names, as the names are the keys and also the unique identifiers 
+            for deleting items
+        */
+        for(let i = 0;i<children.length;i++){
+            if(children[i].itemname == itemname){
+                alert('Item with this name already exists in cart');
+                return                
+            }
+        }
+
         setchildren(children => [...children, details ]);
         props.setcartcounter(props.cartcounter + 1);
     }
@@ -86,8 +55,12 @@ function Addtocart(props){
 
 function Createcontent(props){
 
+    const [qtty,setqtty] = useState(props.qtty? props.qtty:1); 
+/*     if(props.qtty){
+        setqtty(props.qtty)
+    } */
+
     
-    const [qtty,setqtty] = useState(1); 
     let [total,settotal] = [props.total,props.settotal]
     const [children,setchildren] = [props.children,props.setchildren];
 
@@ -199,4 +172,4 @@ function usePrevious(value) {
 
 export default Addtocart;
 
-export {Createcontent,Count}
+export {Createcontent}

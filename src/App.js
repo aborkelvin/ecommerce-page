@@ -20,11 +20,10 @@ function App() {
   const [qtty,setqtty] = useState(1); //currently used in Countqtty inside home 
   
   const [children,setchildren] = useState([
-   /*  {itemname:'Abor Krl',itemimg:image9,price :'$500'},
-    {itemname:'kelprecious',itemimg:image9,price :'$500'}, */
+   //  {itemname:'Abor Krl',itemimg:image9,price :'$500'}, 
   ])// used in shopping cart and addtocart to add/remove cart items
 
-  const [total,settotal] = useState(0)
+  const [total,settotal] = useState(0);
 
 
   
@@ -37,7 +36,8 @@ function App() {
             <Routes>
                 <Route path = '/ecommerce-page/shop' element = { 
                   <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
-                  cartcounter = {cartcounter} setcartcounter = {setcartcounter}  /> 
+                  cartcounter = {cartcounter} setcartcounter = {setcartcounter} children = {children} 
+                  setchildren = {setchildren} /> 
                 } />   
                 <Route path = '/ecommerce-page' element = { 
                   <Shop iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 

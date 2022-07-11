@@ -26,6 +26,7 @@ function ShoppingCart(props){
                       <Createcontent key={item.itemname} itemname = {item.itemname}  itemimg = {item.itemimg} 
                       price = {item.price} total = {total} settotal = {settotal} children = {children}
                       setchildren = {setchildren}  cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter}
+                      qtty = {item.qtty}
                      />
                     )
                   })
