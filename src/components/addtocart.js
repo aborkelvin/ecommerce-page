@@ -55,11 +55,7 @@ function Addtocart(props){
 
 function Createcontent(props){
 
-    const [qtty,setqtty] = useState(props.qtty? props.qtty:1); 
-/*     if(props.qtty){
-        setqtty(props.qtty)
-    } */
-
+    const [qtty,setqtty] = useState(props.qtty? props.qtty: 1); 
     
     let [total,settotal] = [props.total,props.settotal]
     const [children,setchildren] = [props.children,props.setchildren];
@@ -78,9 +74,10 @@ function Createcontent(props){
         */
         let qttydifference = qtty - prevqtty;
         let addingamnt = currency * qttydifference;
+        let initialamt = currency * qtty;
 
         if(isNaN(addingamnt)){
-            updatetotal(currency)
+            updatetotal(initialamt)
         }else{
             updatetotal(addingamnt)
         }
@@ -127,15 +124,6 @@ function Createcontent(props){
 }
 
 
-
-
-
-
-
-
-
-
-
 const Count = (props) =>{    
     function increase(){        
         props.setqtty(props.qtty+1);                   
@@ -156,7 +144,6 @@ const Count = (props) =>{
         </div>
     )
 }
-
 
 
 

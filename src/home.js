@@ -29,7 +29,8 @@ function Home(props) {
         img8:false
     })
 
-    const [currentimg ,setcurrentimg] = useState(image1)
+    const [currentimg ,setcurrentimg] = useState(image1);
+    const [price,setprice] = useState('$125.00');
 
     function changecurrent(e){
         if(e.target.className.includes('image5')){
@@ -87,14 +88,14 @@ function Home(props) {
          <p>These low-profile sneakers are your perfect casual wear companion. Featuring
            a durable rubber outer sole, they'll withstand everything the weather can offer.
          </p>
-         <h3>$125.00 <span>50%</span></h3>
+         <h3>{price} <span>50%</span></h3>
          <h4>$250.00</h4>
          <div className='check'> 
             <Countqtty qtty = {props.qtty} setqtty = {props.setqtty} />
 
            <Addtocart iscartopen={props.iscartopen} setiscartopen={props.setiscartopen} itemimg={image5} 
             itemname = 'Autumn Edition Limited Sneakers' qtty={props.qtty} setqtty={props.setqtty} 
-            cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter} price = '$109'
+            cartcounter = {props.cartcounter} setcartcounter = {props.setcartcounter} price = {price}
             children = {props.children} setchildren = {props.setchildren}  />
 
          </div>
@@ -125,19 +126,6 @@ const Countqtty = (props) =>{
 
 
 export default Home;
-export {Countqtty}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function Addtocart(props){
@@ -149,51 +137,7 @@ function Addtocart(props){
         if(props.iscartopen == false){
             props.setiscartopen(true);
         }
-        
-       /*   //This should create the elements used to display the cart items and add it to cart
-        let li = document.createElement('li');
-        li.classList.add('item');
-        
-        let itemimg = new Image(50,50);
-        itemimg.src = props.itemimg;  
-        itemimg.classList.add('itemimg')
-        
-        let itemname = document.createElement('span');
-        itemname.innerText = props.itemname;
-        itemname.classList.add('itemname')
-
-        let deletebtn = new Image(20,20);
-        deletebtn.src= deleteimg;
-        deletebtn.classList.add('deletebtn','cursor');
-
-        let price = document.createElement('span');
-        price.innerText = '$150.00';
-        price.classList.add('price','figures')
-
-        let quantity = document.createElement('span');
-        quantity.innerText = ` x ${props.qtty}`;
-        quantity.classList.add('quantity','figures')
-
-        let subtotal = document.createElement('span');
-        subtotal.innerText =  ` $${ 150 * props.qtty}`;
-        subtotal.classList.add('subtotal','figures')
-
-
-
-        let basket = document.querySelector('.basket');
-        li.appendChild(itemimg);
-        li.appendChild(itemname);
-        li.appendChild(deletebtn);
-        li.appendChild(price)
-        li.appendChild(quantity)
-        li.appendChild(subtotal)
-        basket.appendChild(li); 
-
-        props.setcartcounter(props.cartcounter + 1);
- */
-
-        
-
+                
         const[itemname,itemimg,price,qtty]  = [props.itemname,props.itemimg,props.price,props.qtty];        
         const details = { 
             itemname : itemname, 
@@ -202,6 +146,12 @@ function Addtocart(props){
             qtty: qtty,
         }
         
+        //prevents initial qtty from being less than one
+        if(props.qtty<1){
+            alert('Quantity cant be less than one, one item will be added')
+            delete details.qtty;            
+        }
+
         /* Prevents multiple items with same names, as the names are the keys and also the unique identifiers 
             for deleting items
         */
