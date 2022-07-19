@@ -34,12 +34,12 @@ function App() {
             setchildren = {setchildren}  qtty={qtty} setqtty={setqtty}   
             total = {total} settotal = {settotal} cartcounter = {cartcounter} setcartcounter = {setcartcounter}/>
             <Routes>
-                <Route path = '/ecommerce-page/shop' element = { 
+                <Route path = '/ecommerce-page' element = { 
                   <Home  iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
                   cartcounter = {cartcounter} setcartcounter = {setcartcounter} children = {children} 
                   setchildren = {setchildren} /> 
                 } />   
-                <Route path = '/ecommerce-page' element = { 
+                <Route path = '/ecommerce-page/shop' element = { 
                   <Shop iscartopen={iscartopen} setiscartopen={setiscartopen} qtty={qtty} setqtty={setqtty} 
                   cartcounter = {cartcounter} setcartcounter = {setcartcounter} children = {children}
                   setchildren = {setchildren} 

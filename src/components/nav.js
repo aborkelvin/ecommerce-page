@@ -23,10 +23,10 @@ function Nav(props){
             <img src={logo} className='logo' />
             <nav>
                 <ul>
-                    <Link to = '/ecommerce-page/shop'>
+                    <Link to = '/ecommerce-page'>
                         <li>Shop</li> 
                     </Link>
-                    <Link to = '/ecommerce-page'>
+                    <Link to = '/ecommerce-page/shop'>
                         <li>Collections</li>
                     </Link>
                     <li><a href='#'>Women</a></li>
