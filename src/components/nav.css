@@ -1,3 +1,6 @@
+html,body{
+    height: 100%;
+}
 .nav-container{
     padding: 45px 50px 50px 50px;
     border-bottom: 1px solid rgb(170, 170, 170);
@@ -5,6 +8,14 @@
     margin: 0 auto 50px;
     position: relative;
 }
+
+.menuicon{
+    margin: 0 15px 0 35px;
+    position: relative;
+    top: 2px;
+    display: none;
+}
+
 .logo{    
     position: relative;
     top: 2px;
@@ -20,9 +31,13 @@ nav ul{
     list-style-type: none;
 }
 
+.closebar{
+    display: none;
+}
+
 nav ul li{
     display: inline-block;
-    margin:0 10px;        
+    margin:0 10px;    
 }
 
 nav a{
@@ -54,11 +69,132 @@ nav a{
     right: 10px;
 }
 
-@media screen and (max-width:550px) {
+
+
+@media screen and (max-width:900px) {
   
-    .nav-container{        
-/*         margin: 0 auto;
-        padding: 45px 5px 50px 5px; */
+    .nav-container{            
+        padding: 0px;
+        margin-top: 40px;
     }
-  
+
+    .cartimg{        
+        top: 15px;
+        right: 80px;
+    }
+
+    .cartcounter{
+        top: 2px;
+        right: 55px;
+    }
+    
+    
+    .avatar{
+        width:35px;
+        top: 7px;
+        right: 10px;
+    }
+    
 }
+
+
+
+@media screen and (max-width:825px) {
+    .nav-container{
+        width: 90%;        
+    }
+
+}
+
+@media screen and (max-width:725px) {
+    
+    .nav-container{
+        margin-top: 0px;
+        width: 100%;    
+        height: 45px;  
+        padding-top: 20px;         
+    }
+
+    .menuicon{
+        display: inline-block;
+    }
+
+    .cartimg{        
+        top: 25px;
+        right: 80px;
+    }
+
+    .cartcounter{
+        top: 12px;
+        right: 55px;
+    }
+    
+    
+    .avatar{
+        width:35px;
+        top: 17px;
+        right: 10px;
+    }
+
+     .headnav{
+        display: block;        
+        background-color: rgb(238, 139, 73);
+        padding-top: 10px;
+        position: fixed;
+        top: 0px;
+        z-index: 1;
+        left: -100%;
+        width: 50%;
+        height: 100vh;
+        transition: all .5s;             
+    }
+
+    .shownav{
+        left: 0px;
+    }
+
+    .closebar{
+        display: block;
+        position: relative;
+        margin: 10px 5px 50px;
+    }
+
+    .headnav ul{
+        padding-left: 30px;
+    }
+
+    .headnav li{
+        display: block;
+        margin: 15px 5px;
+        font-weight: bolder;
+        font-size: 22px;
+    } 
+}
+
+@media screen and (max-width:550px) {
+    .headnav li{
+        font-size: 19px;
+    }
+}
+
+
+@media screen and (max-width:350px) {    
+    .headnav{
+        width: 70%;
+    }
+    .menuicon{
+        margin: 0 15px;
+    }
+    .avatar{
+        width: 25px;
+        top: 20px;
+    }
+    .cartimg{
+        width: 20px;
+        right: 60px;
+    }
+    .cartcounter{
+        right: 32px;
+    }
+}
+
