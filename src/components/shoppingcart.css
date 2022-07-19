@@ -5,8 +5,13 @@
     border-radius: 10px;
     box-shadow: 2px 2px 10px 2px #888888;
     display: none;
+    z-index: 1;
 }
-
+.shoppingcart .pricing{
+    width: 60%;
+    background-color: white;
+    margin: 0 auto;
+}
  .showcart{
     display: inline-block;
     position: absolute;
@@ -91,11 +96,24 @@
 
 @media screen and (max-width:650px) {
     .shoppingcart{
-        width: 400px;
+        width: 100%;                
     }
+    .showcart{
+        top: 70px;
+        /* left: 20px; */
+    }
+
+    .itemimg{
+        width: 70px;
+    }
+
+    .itemname{
+        font-size: 16px;
+    }
+
 
     .figures{
         position: relative;    
-        top: 5px;
+        bottom: 5px;
     }
 }

@@ -47,8 +47,7 @@
    
     .saleitem{
         padding: 10px;
-        flex-basis: 20%;        
-        background-color: lime;
+        flex-basis: 20%;                
         margin: 5px auto;
     }
     .saleitem h3{

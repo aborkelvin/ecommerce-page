@@ -142,7 +142,7 @@ nav a{
         padding-top: 10px;
         position: fixed;
         top: 0px;
-        z-index: 1;
+        z-index: 2;
         left: -100%;
         width: 50%;
         height: 100vh;
@@ -172,6 +172,10 @@ nav a{
 }
 
 @media screen and (max-width:550px) {
+    .headnav{
+        width: 70%;
+    }
+
     .headnav li{
         font-size: 19px;
     }
